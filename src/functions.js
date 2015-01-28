@@ -13,6 +13,12 @@
 */
 
 //your code here
+function uselessFunction(){
+  return null;
+}
+
+console.log(uselessFunction());
+
 
 function uselessFunction() {
      return null;
