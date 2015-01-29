@@ -39,26 +39,44 @@ function returnObjectLiteral() {
 */
 
 //your code here
-var MessageLog = function(user, messageText, direction) {
+var MessageLog = function(user) {
 	this.user = user;
-	this.messageText = messageText;
-	this.direction = direction;
-}
-var message1 = new MessageLog ('Laura', "Hello World.", 0);
+};
+var user1 = new MessageLog ("Laura");
 
-//	        var totalSent = 0;
-//		var totalReceived = 0;
-//		var direction;
-//		var messageText;
-//
-//		if(direction === 0) {
-//			totalSent += 1;
-//		}
-//		else if (direction === 1) {
-//			totalReceived += 1;
-//		}
-	
-//}
+var sentTot = 0;
+var recTot = 0;
+var sentMessages = [];
+var recMessages = [];
+
+function logMessage (messageText, direction) {
+
+	if (direction === 0 ) {
+		for (var i = 1; i < 6; i++) {
+			sentMessages[i] = messageText;
+			sentTot += 1;
+		}
+	}
+	else if (direction === 1) {
+		for (var j = 1; j < 6; j++) {
+			recMessages[j] = messageText;
+			recTot += 1;
+		}
+	}
+}
+
+
+function getSentMessage(n) {
+	var lastMessage = sentMessages[n];
+	return lastMessage;
+}
+
+function totalSent() {
+	return sentTot;
+}
+function totalReceived() {
+	return recTot;
+}
 
 //end your code
 
@@ -69,7 +87,14 @@ var message1 = new MessageLog ('Laura', "Hello World.", 0);
 */
 //your code here
 
+function lastReceivedMessage() {
+	var lastRec = sentMessages[5];
+	return lastRec;
+}
+
+
 //end your code
+
 
 /**
 * Create an instance of a `MessageLog` for the user "BlackHatGuy". Have the
@@ -78,5 +103,10 @@ var message1 = new MessageLog ('Laura', "Hello World.", 0);
 */
 
 //your code here
+var myLog = new MessageLog('BlackHatGuy');
+
+myLog.logMessage('foo', 1);
+myLog.logMessage('bar', 1);
+myLog.logMessage('baz', 1);
 
 //end your code
