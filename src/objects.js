@@ -52,7 +52,6 @@ function MessageLog (user) {
 	this.recMsg = 0;
 	this.logMessage = function (messageText, direction) {
 		if (direction == 0 ) {
-
 			if(this.sentMessages.length > 5) {
 			    this.sentMessages.shift();
 			}
@@ -68,6 +67,7 @@ function MessageLog (user) {
 		}
 	
 	}
+
 	this.getSentMessage = function(n) {
     		return this.sentMessages[this.sentMessages.length-n-1];
 	}
@@ -84,8 +84,6 @@ function MessageLog (user) {
 		return this.recMsg;
 	}
 }
-
-
 //end your code
 
 /**
