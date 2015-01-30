@@ -22,4 +22,4 @@ Tasks: Completed editing and testing of code for src files.  Now all sections pa
 
 Log for part 2:
 
-
+(see log.txt in cs290-assignment3 part 2 repo)
