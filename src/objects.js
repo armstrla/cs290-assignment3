@@ -10,8 +10,12 @@
 
 function returnObjectLiteral() {
   //your code here
-  var object = {type: "Goldfish", brand: "Pepperidge Farm", flavor: "Cheddar", count: 2000}; 
-  return object;//Modify ONLY this line
+return ({
+      type: 'Goldfish', 
+      brand: 'Pepperidge Farm', 
+      flavor: 'Cheddar', 
+      count: 2000}); 
+//Modify ONLY this line
   //end your code
 }
 
@@ -39,44 +43,48 @@ function returnObjectLiteral() {
 */
 
 //your code here
-var MessageLog = function(user) {
+
+function MessageLog (user) {
 	this.user = user;
-};
-var user1 = new MessageLog ("Laura");
+	this.sentMessages = [];
+	this.recMessages = [];
+	this.sentMsg = 0;
+	this.recMsg = 0;
+	this.logMessage = function (messageText, direction) {
+		if (direction == 0 ) {
 
-var sentTot = 0;
-var recTot = 0;
-var sentMessages = [];
-var recMessages = [];
-
-function logMessage (messageText, direction) {
-
-	if (direction === 0 ) {
-		for (var i = 1; i < 6; i++) {
-			sentMessages[i] = messageText;
-			sentTot += 1;
+			if(this.sentMessages.length > 5) {
+			    this.sentMessages.shift();
+			}
+			this.sentMessages.push(messageText);
+			this.sentMsg++;
 		}
-	}
-	else if (direction === 1) {
-		for (var j = 1; j < 6; j++) {
-			recMessages[j] = messageText;
-			recTot += 1;
+		else{
+			if(this.recMessages.length > 5) {
+			   this.recMessages.shift();
+			}
+			this.recMessages.push(messageText);
+			this.recMsg++;
 		}
+	
+	}
+	this.getSentMessage = function(n) {
+    		return this.sentMessages[this.sentMessages.length-n-1];
+	}
+
+	this.lastReceivedMessage = function() {
+		return this.recMessages;
+	}
+
+	this.totalSent = function() {
+		return this.sentMsg;
+	}
+
+	this.totalReceived = function() {
+		return this.recMsg;
 	}
 }
 
-
-function getSentMessage(n) {
-	var lastMessage = sentMessages[n];
-	return lastMessage;
-}
-
-function totalSent() {
-	return sentTot;
-}
-function totalReceived() {
-	return recTot;
-}
 
 //end your code
 
@@ -87,9 +95,8 @@ function totalReceived() {
 */
 //your code here
 
-function lastReceivedMessage() {
-	var lastRec = sentMessages[5];
-	return lastRec;
+MessageLog.prototype.lastReceivedMessage = function() {
+   	return (this.recMessages[0]);
 }
 
 
@@ -103,10 +110,10 @@ function lastReceivedMessage() {
 */
 
 //your code here
-var myLog = new MessageLog('BlackHatGuy');
+var myLog = new MessageLog("BlackHatGuy");
 
-myLog.logMessage('foo', 1);
-myLog.logMessage('bar', 1);
-myLog.logMessage('baz', 1);
+myLog.logMessage("foo", 1);
+myLog.logMessage("bar", 1);
+myLog.logMessage("baz", 1);
 
 //end your code
